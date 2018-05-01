@@ -1,12 +1,16 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-\usepackage{amssymb,latexsym,amsmath,amscd,amsthm, mathtools,stmaryrd, hyperref, cleveref}
+
+\usepackage{amssymb,latexsym,amsmath,amscd,amsthm, mathtools,stmaryrd, hyperref, enumitem, cleveref}
+
 \theoremstyle{theorem}
 \newtheorem{theorem}{Theorem}
+
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 \newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
 
 
 %opening
@@ -203,6 +207,57 @@ The next theorem also could be used as a definition.
 		
 
 When $q=p$ is a prime greater than 3 this is equivalent to having the trace of Frobenius morphism equal to zero; this does not hold for $p = 2 \ \text{or} \ 3$.
+
+ \subsection{Examples}
+
+In this section we are going to give some examples of supersingular curves.
+
+Using definitions given in previous section may not always be a convenient way to identify a supersingular curves. But from those equivalent definitions we see thath up to isomorphism, there are only finitely many elliptic curves with Hasse invariant 0, since each has $j$-invariant in $\mathbb{F}_{p^2}$. For $p = 2$, once can easily check that the only one supersingular elliptic curve is 
+	\[ E: y^2 + y = x^3. \]
+For $p > 2$, the following theorem gives a simple criterion for determining whether an elliptic curve is supersingular.
+
+\begin{theorem} \label{thm1}
+	Let $K$ be finite field of characteristic $p > 2$.
+		\begin{enumerate}[label = (\alph*)]
+			\item Let $E/K$ be an elliptic curve with Weierstrass equation 
+					\[ E: y^2 = f(x) \]
+				where $f(x) \in K[x]$ is a cubic polynomial with distinct roots (in $\bar{K}$). Then $E$ is supersingular if and only if the coefficient of $x^{p - 1}$ in $f(x)^{(p - 1)/2}$ is zero.
+			
+			\item  Let $m = (p - 1)/2$, and define a polynomial
+					\[H_p(t) = \sum_{i = 0}^{m} \binom{m}{i}^2t^i. \]
+				Let $\lambda \in \bar{K}$, $\lambda \neq 0, 1$. Then the elliptic curve
+					\[E: y^2 = x(x - 1)(x - \lambda)  \]
+				is supersingular if and only if $H_p(\lambda) = 0$.
+			
+			\item The polynomial $H_p(t)$ has distinct roots in $\bar{K}$. Up to isomorphism, there are exactly
+					\[ [\frac{p}{12}] + \varepsilon_p \]
+				supersingular elliptic curves in characteristic $p$, where $\varepsilon_3 = 1$, and for $p \geq 5$,
+					\[\varepsilon_p = 0, 1, 1, 2 \quad \textrm{if} \quad p \cong 1, 5, 7, 11 (\mathrm{mod}12). \]
+			(Cf. \cite[V, \S4, Theorem 4.1]{Silverman})
+		\end{enumerate}
+\end{theorem}
+
+\begin{example}
+	For which primes $p \geq 5$ is the elliptic curve
+		\[E:  y^2 = x^3 + 1\]
+	supersingular?
+	
+	Notice this curve has $j(E) = 0$. From the criterion of \cref{thm1}(a), we must compute the coefficient of $x^{p-1}$ in $(x^3 + 1)^{(p-1)/2}$. If $p \cong 2 \mathrm{mod} 3$, then there is no $x^{p-1}$ term, so $E$ is supersingular; while if $p \cong 1 \mathrm{mod} 3$, then the coefficients is $\binom{(p-1)/2}{(p-1)/3}$, which is non-zero modulo $p$, so in this case $E$ is ordinary.
+\end{example}
+
+\begin{example}
+	Similary we compute for which primes $p \geq 3$ the $j = 1728$ elliptic curve
+		\[E: y^2 = x^3 + x \]
+	is supersingular.
+	
+	This is determined by the coefficient of $x^{(p-1)/2}$ in $(x^2 + 1)^{(p-1)/2}$, which equals $0$ if $p \cong 3 \mathrm{mod} 4$ and $\binom{(p-1)/2}{(p-1)/4}$ if $p \cong 1 \mathrm{mod} 4$. Hence $E$ is supersingular if $p \cong 3 \mathrm{mod} 4$ and ordinary if $p \cong 1 \mathrm{mod} 4$.
+\end{example}
+
+\begin{example}
+	Let $E$ be given by the equation 
+		\[E: y^2 + y = x^3 -x^2 -10x - 20,\]
+	so $j(E) = -\frac{2^{12}31^3}{11^5}$. Then by using the criterion of \cref{thm1} (a) directly one finds that the only primes $p < 100$ for which $E$ is supersingular in characteristic $p$ are $p = 19$ and $p = 29$. (D. H. Lehmer has calculated that there are exactly $27$ primes $p < 31500$ for which this $E$ is supersingular.) 
+\end{example}
 
 
 \section{Supersingular Isogeny Graphs}
