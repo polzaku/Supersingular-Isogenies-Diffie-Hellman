@@ -299,19 +299,20 @@ respectively.
 
 \subsection{Supersingular isogeny graph}
 
-For the supersingular isogey graph we work over $\bar{\mathbb{F}}_p$. The graph is finite. Indeed, \cref{thm1} (c) implies $\frac{p}{12} - 1 < \#X_{E, \bar{\mathbb{F}}_p, S} < \frac{p}{12} + 2$. Note that it suffices to consider elliptic curves defined over $\mathbb{F}_{p^2}$ (although the isogenies between them are over $\hat{\mathbb{F}}_p$ in genereal).
+For the supersingular isogey graph we work over $\bar{\mathbb{F}}_p$. The graph is finite. Indeed, \cref{thm1} (c) implies $\frac{p}{12} - 1 < \#X_{E, \bar{\mathbb{F}}_p, S} < \frac{p}{12} + 2$. Note that it suffices to consider elliptic curves defined over $\mathbb{F}_{p^2}$ (although the isogenies between them are over $\bar{\mathbb{F}}_p$ in genereal).
 
 In contrast to the ordinary case , the supersingular graph is always connected using isogenies of any fixed degree (Cf. \cite[2.4]{Mestre}).
 
 \begin{theorem}
-	Let $p$ be a prime and let $E$ and $\tilde{E}$ be supersingular elliptic curves over $\hat{\mathbb{F}}_p$. Let $\ell$ be a prime different from $p$. Then there is an isogeny from $E$ to $\tilde{E}$ over $\hat{\mathbb{F}}_p$ whose degree is a power of $\ell$ (Cf. \cite[2.4]{Mestre}).
+	Let $p$ be a prime and let $E$ and $\tilde{E}$ be supersingular elliptic curves over $\bar{\mathbb{F}}_p$. Let $\ell$ be a prime different from $p$. Then there is an isogeny from $E$ to $\tilde{E}$ over $\bar{\mathbb{F}}_p$ whose degree is a power of $\ell$ (Cf. \cite[2.4]{Mestre}).
 \end{theorem}
 
-Hence, one can choose any prime $\ell$ and consider the $\ell$-isogeny graphh $X_{e,\hat{\mathbb{F}}_p, {\ell}}$ on supersingular curves over $\hat{\mathbb{F}}_p$. It follows that the graph is $(\ell + 1)$-regular and connected.
+Hence, one can choose any prime $\ell$ and consider the $\ell$-isogeny graphh $X_{e,\bar{\mathbb{F}}_p, {\ell}}$ on supersingular curves over $\bar{\mathbb{F}}_p$. It follows that the graph is $(\ell + 1)$-regular and connected.
 
 Now we will give some examples of supersingular isogeny graphs.
 
-\begin {center}
+\begin{figure}[h]
+\begin{center}
 	\begin{tikzpicture}[->, shorten >=2pt, shorten <=2pt, >=stealth', node distance = 2cm]
 
 		\node (1) {$17$};
@@ -355,6 +356,8 @@ Now we will give some examples of supersingular isogeny graphs.
   
 \end{tikzpicture}
 \end{center}
+\caption{Supersingular Isogeny Graph $X_{\bar{\mathbb{F}}_{83}, 2}$}\label{SIG83.figure}
+\end{figure}
 
 \begin{thebibliography}{}
 	\bibitem{PurelyInseparable} Lindsay N. Childs. \textit{Purely Inseparable Field Extension}. \url{http://www.math.cornell.edu/~dkmiller/galmod/Childs_purely-inseparable.pdf}
