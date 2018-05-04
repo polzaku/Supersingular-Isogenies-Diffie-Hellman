@@ -2,6 +2,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 
+\usepackage{tikz}
+\usetikzlibrary{graphs, positioning, arrows}
+
 \usepackage{amssymb,latexsym,amsmath,amscd,amsthm, mathtools,stmaryrd, hyperref, enumitem, cleveref}
 
 \theoremstyle{theorem}
@@ -305,6 +308,53 @@ In contrast to the ordinary case , the supersingular graph is always connected u
 \end{theorem}
 
 Hence, one can choose any prime $\ell$ and consider the $\ell$-isogeny graphh $X_{e,\hat{\mathbb{F}}_p, {\ell}}$ on supersingular curves over $\hat{\mathbb{F}}_p$. It follows that the graph is $(\ell + 1)$-regular and connected.
+
+Now we will give some examples of supersingular isogeny graphs.
+
+\begin {center}
+	\begin{tikzpicture}[->, shorten >=2pt, shorten <=2pt, >=stealth', node distance = 2cm]
+
+		\node (1) {$17$};
+		\node (2) [above right of=1] {$\alpha$};
+		\node (3) [below right of=1] {$\bar{\alpha}$};
+		\node (4) [below right of=2] {$67$};
+		\node (5) [right of=4] {$68$};
+		\node (6) [left of=1] {$50$};
+		\node (7) [below of=6] {$28$};
+		\node (8) [above left of=6] {$0$};
+
+			\path
+				(1) edge [bend left] (2)
+				(1) edge (3)
+				(1) edge (6)
+				
+				(2) edge (1)
+				(2) edge [bend left] (3)
+				(2) edge [bend left] (4)
+				
+				(3) edge [bend left] (1)
+				(3) edge [bend left] (2)
+				(3) edge (4)
+				
+				(4) edge (2)
+				(4) edge [bend left] (3)
+				(4) edge (5)
+				
+				(5) edge [bend left] node[below]{\tiny{$2$}} (4)
+				(5) edge [loop right] (5)
+				
+				(6) edge [bend left] (1)
+				(6) edge [bend left] (7)
+				(6) edge (8)
+				
+				(7) edge (6)
+				(7) edge [loop left] (7)
+				(7) edge [loop right] (7)
+				
+				(8) edge [bend left] node[above]{\tiny{$3$}} (6);
+  
+\end{tikzpicture}
+\end{center}
 
 \begin{thebibliography}{}
 	\bibitem{PurelyInseparable} Lindsay N. Childs. \textit{Purely Inseparable Field Extension}. \url{http://www.math.cornell.edu/~dkmiller/galmod/Childs_purely-inseparable.pdf}
