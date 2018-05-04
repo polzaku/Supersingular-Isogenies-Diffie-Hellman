@@ -260,16 +260,16 @@ For $p > 2$, the following theorem gives a simple criterion for determining whet
 \end{example}
 
 
-\section{Supersingular Isogeny Graphs}
+\section{Isogeny Graphs}
 
 We start this section with a notion of isogeny.
 	\begin{definition} \label{isogeny}
-		Let $E_1$ and $E_2$ be elliptic curves defined over a finite field $\mathbb{F}_q$ of characteristic $p$. An \textit{isogeny} $\phi: E_1 \to E_2$ defined over $\mathbb{F}_q$ is a non-constant morphism that maps the identity into the identity (and this a is group homomorphism) \cite[2.1]{HardEasyProbs}.
+		Let $E_1$ and $E_2$ be elliptic curves defined over a finite field $\mathbb{F}_q$ of characteristic $p$. An \textit{isogeny} $\phi: E_1 \to E_2$ defined over $\mathbb{F}_q$ is a non-constant morphism that maps the identity into the identity (and this a is group homomorphism) (Cf. \cite[2.1]{HardEasyProbs}).
 	\end{definition}
 Two elliptic curves $E_1$ and $E_2$ defined over $\mathbb{F}_q$ are said to be \textit{isogenous} over $\mathbb{F}_q$ if there exists an isgony $\phi: E_1 \to E_2$ defined over $\mathbb{F}_q$.
 
 \begin{theorem}[Sato-Tate]
-	Two elliptic curves $E_1$ and $E_2$ are isogenous over $\mathbb{F}_q$ if and only if $\#E_1(\mathbb{F}_q) = \#E_2(\mathbb{F}_q)$ \cite[Theorem 13]{IsogenyCryptoDeFeo}. 
+	Two elliptic curves $E_1$ and $E_2$ are isogenous over $\mathbb{F}_q$ if and only if $\#E_1(\mathbb{F}_q) = \#E_2(\mathbb{F}_q)$ (Cf. \cite[Theorem 13]{IsogenyCryptoDeFeo}). 
 \end{theorem}  
 
 The degree of an isogeny $\phi$ is the degree of $\phi$ as a morphism. An isogeny of degree $\ell$ is called $\ell$-isogeny. 
@@ -278,7 +278,7 @@ Curves in the same isogeny class are either all supersingular or all ordinary.
 
 %For prime $\ell \not| p$, we have $E[\ell] \simeq \mathbb{Z}/\ell\mathbb{Z} \oplus \mathbb{Z}/\ell\mathbb{Z}$ \cite[2]{TowardsQuantumRes}.
 
-Supersingular curves are all defined over $\mathbb{F}_{p^2}$, and for every prime $\ell \not| p$, there exist $\ell + 1$ isogenies (counting multiplicities) of degree $\ell$ originating from any given such supersingular curve. An isogeny can be identified with its kernel. Given a subgroup $G$ of $E$, we can use Velu's formulas \cite[Proposition 39]{IsogenyCryptoDeFeo} to compute an isogeny $\phi: E_1 \to E_2$ with kernel $G$ and such that $E_2 \simeq E_1/G$. 
+%Supersingular curves are all defined over $\mathbb{F}_{p^2}$, and for every prime $\ell \not| p$, there exist $\ell + 1$ isogenies (counting multiplicities) of degree $\ell$ originating from any given such supersingular curve. An isogeny can be identified with its kernel. Given a subgroup $G$ of $E$, we can use Velu's formulas \cite[Proposition 39]{IsogenyCryptoDeFeo} to compute an isogeny $\phi: E_1 \to E_2$ with kernel $G$ and such that $E_2 \simeq E_1/G$. 
 
 For each isogeny $\phi: E_1 \to E_2$, there is a unique isogeny $\hat{\phi}: E_2 \to E_1$ which is called the \textit{dual isogeny} of $\phi$, satisfying $\phi\hat{\phi} = \hat{\phi}\phi = [\mathrm{deg}\phi]$. 
 
@@ -288,11 +288,23 @@ We also write $E(0)$ and $E(1728)$ for the curves with equations
 	\[y^2 = x^3 + 1 \quad \text{and} \quad y^2 = x^3 +x \]
 respectively.
 
-	\begin{definition}[$\ell$-isogeny graph]
-		For any prime $\ell \neq p$, one can construct a so-called \textit{$\ell$-isogeny graph}, where each vertex is associated to a supersingular $j$-invariant, and an edge between two vertices is associated to a degree $\ell$ isogeny between the corresponding curves \cite[2.1]{HardEasyProbs}.
+	\begin{definition}[Isogeny graph]
+		Let $E$ be an elliptic curve over a field $K$ of characteristic $p$. Let $S \subseteq \mathbb{N}$ be a finite set of primes. Define
+			\[X_{E, K, S} \]
+		to be the graph with vertex set being the $K$-isogeny class of $E$. Vertices are typically labelled by $j(E)$, though we also speak of "the vertex $E$". There is an edge $(j(E_1), j(E_2))$ labelled by $\ell$ for ezch equivalence class of $\ell$-isogenies from $E_1$ to $E_2$ defined over $K$ for some $\ell \in S$. We usually treat this as an undirected graph, since for every $\ell$-isogeny $\phi: E_1 \to E_2$ there is a dual isogeny $\hat{\phi}: E_2 \to E_1$ of degree $\ell$ (Cf. \cite[25.2]{Galbraith-PKC}). 
 	\end{definition}
 
-Isogeny graphs are regular with regularity degree $\ell + 1$; they are undirected since to any isogeny from $j_1$ to $j_2$ corresponds a dual isogeny from $j_2$ to $j_1$. 
+\subsection{Supersingular isogeny graph}
+
+For the supersingular isogey graph we work over $\bar{\mathbb{F}}_p$. The graph is finite. Indeed, \cref{thm1} (c) implies $\frac{p}{12} - 1 < \#X_{E, \bar{\mathbb{F}}_p, S} < \frac{p}{12} + 2$. Note that it suffices to consider elliptic curves defined over $\mathbb{F}_{p^2}$ (although the isogenies between them are over $\hat{\mathbb{F}}_p$ in genereal).
+
+In contrast to the ordinary case , the supersingular graph is always connected using isogenies of any fixed degree (Cf. \cite[2.4]{Mestre}).
+
+\begin{theorem}
+	Let $p$ be a prime and let $E$ and $\tilde{E}$ be supersingular elliptic curves over $\hat{\mathbb{F}}_p$. Let $\ell$ be a prime different from $p$. Then there is an isogeny from $E$ to $\tilde{E}$ over $\hat{\mathbb{F}}_p$ whose degree is a power of $\ell$ (Cf. \cite[2.4]{Mestre}).
+\end{theorem}
+
+Hence, one can choose any prime $\ell$ and consider the $\ell$-isogeny graphh $X_{e,\hat{\mathbb{F}}_p, {\ell}}$ on supersingular curves over $\hat{\mathbb{F}}_p$. It follows that the graph is $(\ell + 1)$-regular and connected.
 
 \begin{thebibliography}{}
 	\bibitem{PurelyInseparable} Lindsay N. Childs. \textit{Purely Inseparable Field Extension}. \url{http://www.math.cornell.edu/~dkmiller/galmod/Childs_purely-inseparable.pdf}
@@ -301,10 +313,14 @@ Isogeny graphs are regular with regularity degree $\ell + 1$; they are undirecte
 	
 	\bibitem{TowardsQuantumRes} Luca De Feo, David Jao, Jerome Plut. \textit{Towards Quantum-Resistant Cryptosystems From Supersingular Elliptic Curve Isogenies}, Journal of Mathematical Cryptology, 2014, 8 (3), pp. 209-247. \url{https://eprint.iacr.org/2011/506.pdf}
 	
+	\bibitem{Galbraith-PKC} Steven D. Galbraith. \textit{Mathematics of Public Key Cryptography}. Cambridge University Press, 2012.
+	
 	\bibitem{Hartshorne} Robin Hartshorne. \textit{Algebraic Geometry}, volume 52 of \textit{Graduate Texts in Mathematics}. Springler, New-York, 1977.
 	
 	\bibitem{Lang} Serge Lang. \textit{Algebra}, volume 211 of \textit{Graduate Texts in Mathematics}. Springer-Verlag, New York, 2002.
 
+	\bibitem{Mestre} J-F Mestre. \textit{La methode des graphes. Exemples et applications}, 2004.
+	
 	\bibitem{HardEasyProbs} Christophe Petit, Kristin Lauter. \textit{Hard and Easy Problems for Supersingular Isogeny Graphs}. 2018
 	
 	\bibitem{Silverman} Joseph H. Silverman. \textit{The arithmetic of elliptic curves}, volume 106 of \textit{Graduate Texts in Mathematics}. Springer-Verlag, New York, 1992.
