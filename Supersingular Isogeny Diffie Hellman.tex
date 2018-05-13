@@ -9,11 +9,13 @@
 
 \theoremstyle{theorem}
 \newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 \newtheorem{remark}{Remark}
 \newtheorem{example}{Example}
+\newtheorem{problem}{Problem}
 
 
 %opening
@@ -501,7 +503,7 @@ It is obvious that if Eve can compute discrete logarithms in $G$ efficiently, th
 
 There exists some algorithms to compute discrete logarithms in a generic group $G$ that require $O(\sqrt{q})$ computational steps (see \cite{Joux}), where $q$ is the largest prime divisor of $\#G$. We also know that these algorithms are optimal for abstract cyclic groups. Therefore, the group $G$ is usually chosen that way that the largest prime divisor $Q$ has size at least $\log_2q \simeq 256$. But there also exist algorithms of complexity better than $O(\sqrt{\#G})$ for the case $G = (\mathbb{Z}/p\mathbb{Z})^{\ast}$ (see \cite{Joux}), thus requiring parameters of larger size to guarantee cryptographic strength.
 
-However, no algorithms that solve discrete algorithm problem then generic ones are known for the case when $G$ is a subgroup of $E(K)$, where $E$ is an elliptic curve defined over a finite field $K$. For this reason, in the 1980s Miller and Koblitz suggested to replace $(\mathbb{Z}/p\mathbb{Z})^{\ast}$ in the Diffie-Hellman protocol by the group of rational point of an elliptic curve over a finite field. In this case public parameters of Diffie-Hellman protocol are:
+However, no algorithms that solve discrete algorithm problem then generic ones are known for the case when $G$ is a subgroup of $E(K)$, where $E$ is an elliptic curve defined over a finite field $K$. For this reason, in the 1980s Miller (\cite{Miller}) and Koblitz (\cite{Koblitz}) suggested to replace $(\mathbb{Z}/p\mathbb{Z})^{\ast}$ in the Diffie-Hellman protocol by the group of rational point of an elliptic curve over a finite field. In this case public parameters of Elliptic Curves Diffie-Hellman (ECDH) protocol are:
 
 	\begin{itemize}
 		\item Finite field $\mathbb{F}_p$, with $\log_2p \simeq 256$;
@@ -523,6 +525,27 @@ And then Alice and Bob take the following steps:
 		\item Finally, they compute shared secret $S = [a]B = [b]A$.
 	\end{enumerate}
 
+It is already known that it is possible to reduce discrete logarithm problem on supersingular elliptic curves to the discrete logarithm problem in finite field (Cf. \cite{MOV}). Hence it is possible to reduce the problem to one which is known to have sub-exponential complexity. That is why one should avoid using supersingular curves in ECDH.
+
+In 2010 Stolbunov proposed a Diffie-Hellman type system based on the difficulty of computing isogenies between ordinary elliptic curves in order to get quantum-resistant cryptographic protocols. This paper concerns on using isogenies between \textit{supersingular} elliptic curves instead of ordinary elliptic curves. The main technical difficulty is that, in the supersingular case, the endomorphism ring is noncommutative, whereas Diffie-Hellman type require commutativity.
+
+Before moving to the Supersingular Isogeny Diffie-Hellman protocol description, we recall some concepts of graph theory.
+
+We will restrict to undirected graphs. A \textit{path} in undirected graph $(E, V)$ between two vertices $v, v'$ is a sequence of vertices $v \to v_1 \to \cdots \to v'$such that each vertex is connected to the next  by an edge. The \textit{adjacency matrix} of a graph $G$ with vertex set $V = {v_1, \dots, v_n}$ and edge set $E$, is $n \times n$ matrix where the $(i, j)$-th entry is 1 if there is an edge between $v_i$ and $v_j$, and 0 otherwise. Since we have restricted to undirected graphs, the adjacency matrix is symmetric, thus it has $n$ real eigenvalues
+	\[ \lambda_1 \geq \dots \geq \lambda_n. \]
+It is convenient to identify functions on $V$ with vectors in $\mathbb{R}^n$, and therefore consider the adjacency matrix as a self-adjoint operator in $L^2(V)$. Then we can bound the eigenvalues of $G$.
+
+\begin{proposition}
+	if $G$ is a $k$-regular graph, then its largest and smallest eigenvalues $\lambda_1$ and $\lambda_n$ satisfy
+		\[ k = \lambda_1 \geq \lambda_n \geq -k. \]
+\end{proposition}
+
+\begin{definition}[Expander graph]
+	Let $\varepsilon > 0$ and $k \geq 1$. A $k$-regular graph is called a \textit{(one-sided) $\varepsilon$-expander} if
+		\[ \lambda_2 \leq (1 - \varepsilon)k \]
+	and a \textit{two-sided $\varepsilon$-expander} if it also satisfies
+		\[ \lambda_n \geq -(1 - \varepsilon)k. \]
+\end{definition}
 
 \newpage
 \begin{thebibliography}{}
@@ -540,9 +563,15 @@ And then Alice and Bob take the following steps:
 	
 	\bibitem{Joux} Antoine Joux. \textit{Algorithmic cryptanalysis}. CRC Press, 2009.
 	
+	\bibitem{Koblitz} Neal Koblitz. \textit{Elliptic Curve Cryptosystems}. Mathematics of Computation, 48:203-209, 1987.
+	
 	\bibitem{Lang} Serge Lang. \textit{Algebra}, volume 211 of \textit{Graduate Texts in Mathematics}. Springer-Verlag, New York, 2002.
 
 	\bibitem{Mestre} J-F Mestre. \textit{La methode des graphes. Exemples et applications}, 2004.
+	
+	\bibitem{Miller} Victor Miller. \textit{Use of elliptic curves in cryptography}. In Advances in Cryptology, CRYPTO 85, pages 417-426. Springer Verlag, LN CS 218, 1986.
+	
+	\bibitem{MOV} A. Menezes, T. Okamoto, S. Vanstone. \textit{Reducing elliptic curve logarithms to a finite field}. IEEE Transactions on Information Theory, 39:1639-1646, 1993.
 	
 	\bibitem{HardEasyProbs} Christophe Petit, Kristin Lauter. \textit{Hard and Easy Problems for Supersingular Isogeny Graphs}. 2018
 	
