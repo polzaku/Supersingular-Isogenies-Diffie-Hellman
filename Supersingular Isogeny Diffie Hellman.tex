@@ -531,13 +531,14 @@ In 2010 Stolbunov proposed a Diffie-Hellman type system based on the difficulty 
 
 Before moving to the Supersingular Isogeny Diffie-Hellman protocol description, we recall some concepts of graph theory.
 
-We will restrict to undirected graphs. A \textit{path} in undirected graph $(E, V)$ between two vertices $v, v'$ is a sequence of vertices $v \to v_1 \to \cdots \to v'$such that each vertex is connected to the next  by an edge. The \textit{adjacency matrix} of a graph $G$ with vertex set $V = {v_1, \dots, v_n}$ and edge set $E$, is $n \times n$ matrix where the $(i, j)$-th entry is 1 if there is an edge between $v_i$ and $v_j$, and 0 otherwise. Since we have restricted to undirected graphs, the adjacency matrix is symmetric, thus it has $n$ real eigenvalues
+We will restrict to undirected graphs. The \textit{diameter} of a connected graph is the largest of all distances between its vertices. A \textit{path} in undirected graph $(E, V)$ between two vertices $v, v'$ is a sequence of vertices $v \to v_1 \to \cdots \to v'$such that each vertex is connected to the next  by an edge. The \textit{adjacency matrix} of a graph $G$ with vertex set $V = {v_1, \dots, v_n}$ and edge set $E$, is $n \times n$ matrix where the $(i, j)$-th entry is 1 if there is an edge between $v_i$ and $v_j$, and 0 otherwise. Since we have restricted to undirected graphs, the adjacency matrix is symmetric, thus it has $n$ real eigenvalues
 	\[ \lambda_1 \geq \dots \geq \lambda_n. \]
 It is convenient to identify functions on $V$ with vectors in $\mathbb{R}^n$, and therefore consider the adjacency matrix as a self-adjoint operator in $L^2(V)$. Then we can bound the eigenvalues of $G$.
 
 \begin{proposition}
 	if $G$ is a $k$-regular graph, then its largest and smallest eigenvalues $\lambda_1$ and $\lambda_n$ satisfy
 		\[ k = \lambda_1 \geq \lambda_n \geq -k. \]
+		(Cf. \cite{Tao})
 \end{proposition}
 
 \begin{definition}[Expander graph]
@@ -546,6 +547,26 @@ It is convenient to identify functions on $V$ with vectors in $\mathbb{R}^n$, an
 	and a \textit{two-sided $\varepsilon$-expander} if it also satisfies
 		\[ \lambda_n \geq -(1 - \varepsilon)k. \]
 \end{definition}
+
+A sequence $G_i = (V_i, E_i)$ of $k$-regular graphs with $\#V_i \to \infty$ is said to be a one-sided (respectively two-sided) \textit{expander family} if there is an $\varepsilon > 0$ such that $G_i$ is a one-sided (respectively two-sided) $\varepsilon$-expander for all sufficiently large $i$.
+
+Expander families have a lot of applications in theoretical computer science due to their pseudo-randomness propreties: they are useful for pseudo-random number generators contructions, error-correcting codes, probabilistic checkable proofs and cryptographic primitives. We can describe them as having shoert diameter and rapidly mixing walks.
+
+\begin{proposition}
+	Let $G$ be a $k$-regular one sided $\varepsilon$-expander. For any vertex $v$ and eny radius $r > 0$, let $B(v, r)$ be the ball of vertices at distance at most $r$ from $v$. Then, there is a constant $c > 0$, depending  only on $k$ and $\varepsilon$, such that
+		\[ \#B(v, r) \geq\min((1 + c)^r, \#V). \]
+\end{proposition}
+
+This shows that the diameter of an expander graph is bounded by $O(\log n)$, where the constant depends only on $k$ and $\varepsilon$. A \textit{random walk} of length $i$ is a path $v_1 \to \cdots v_i$, defined by the random process that selects $v_i$ uniformly at random among the neighbors of $v_{i-1}$. The next proposition says that, in an expander graph, random walks of length close to its diameter terminate on any vertex with probability close to uniform.
+
+\begin{proposition}
+	Let $G = (V, E)$ be a $k$-regular two-sided $\varepsilon$-expander. Let $F \subset V$ be any subset of the vertices of $G$, and let $v$ be any vertex in $V$. Then a random walk of length at least
+		\[ \frac{\log\#F^{1/2}/2\#V}{\log(1 - \varepsilon)} \]
+	starting from $v$ will land in $F$ with probability at least $\#F/2\#V$.
+\end{proposition}
+
+
+
 
 \newpage
 \begin{thebibliography}{}
@@ -578,6 +599,8 @@ It is convenient to identify functions on $V$ with vectors in $\mathbb{R}^n$, an
 	\bibitem{Silverman} Joseph H. Silverman. \textit{The arithmetic of elliptic curves}, volume 106 of \textit{Graduate Texts in Mathematics}. Springer-Verlag, New York, 1992.
 
 	\bibitem{SutherlandEllipticCurves} Andrew V. Sutherland. \textit{  Elliptic Curves (18.783)}, Lecture Notes, Spring 2015, full course is available on \url{http://dspace.mit.edu/handle/1721.1/111949#files-area}
+	
+	\bibitem{Tao} Terence Tao. \textit{Expansion in groups of Lie type  - basic theory of expander graphs}, 2011. \url{https://terrytao.wordpress.com/2011/12/02/245b-notes-1-basic-theory-of-expander-graphs/}
 	
 	
 \end{thebibliography}
