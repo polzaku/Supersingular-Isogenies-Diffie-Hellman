@@ -775,8 +775,69 @@ The analogues between Diffie-Hellman protocols described above are summarized in
 \caption{Analogues between DH instantiations}\label{DH-Analogues-table:figure}
 \end{figure}
 
+\subsubsection{Security of Supersingular Isogeny Diffie-Hellman}
+
+The first application of isogenies to cryptography was to study  the difficulty of the discrete logarithm problem in elliptic curves. There are several computational problems related to isogenies. Here are some examples of those problems.
+
+\begin{problem}[Isogeny computation]
+	Given an elliptic curve $E$ with Frobenius endomorphism  $\pi$, and a subgroup $G \subset E$ such that $\pi(G) = G$, compute the rational fraction and the image curve of the separable isogeny $\phi$ of kernel $G$.
+\end{problem}
+
+Velu's formulas (\cite[Proposition 38]{IsogenyCryptoDeFeo}) give a solution to this problem in $\bar{O}(\#G)$ operations over the field of definition of the curve $E$. However in some special intances, for example, when $\phi$ is a composition of many small degree isogenies, the rational fractions may be represented more compactly, and the cos may become only logarithmic in $\#G$.
+
+\begin{problem}[Explicit isogeny]
+	Given two elliptic curves $E, E'$ over a finite field, isogenous of known degree $d$, find an isogeny $\phi: E \to E'$ of degree $d$.
+\end{problem}
+
+Up to automorphism, the isogeny $\phi$ is typically unique. The first algorithm was given \cite{Elkies92}, \cite{Elkies98} and had complexity $O(d^3)$ in general, and $\bar{O}(d)$ in special context  of the SEA algorithm. There also exist other alternate with complexity $O(d^2)$.
+
+\begin{problem}[Isogeny path]
+	Given two elliptic curves $E, E'$ over a finite field $K$, such that, such that $\#E = \#E'$, find an isogeny $\phi: E \to E'$ of smooth degree.
+\end{problem}
+
+The security of SIDH relies on the hardness of the problem called SSDDH. The best known algorithmsfor SSDDH have exponential complexity, even on a quantum computer.
+
+\begin{problem}[Supersingular Decision Diffie-Hellman]
+	Let $E, \ell_A, \ell_B, \varepsilon_A, \varepsilon_B, P_A, Q_A, P_B, Q_B$ be the parameters of a SIDH protocol.
+	
+	Given a tuple sampled with probability  $1/2$ from one of the following two distributions:
+	\begin{enumerate}
+		\item $(E/\langle A \rangle, \phi(P_B), \phi(Q_B). E/\langle B \rangle, \psi(P_A), \psi(Q_A), e/\langle A, B \rangle)$, where
+				
+				\begin{itemize}
+					\item $A \in E$ is a uniformly random point of order $\ell_A^{\varepsilon_A}$,
+					
+					\item $B \in E$ is a uniformly random point of order $\ell_B^{\varepsilon_B}$,
+					
+					\item $\phi: E \to E/\langle A \rangle$ is the isogeny of kernel $\langle A \rangle$, and
+					
+					\item $\psi: E \to E/\langle B \rangle$ is the isogeny of kernel $\langle B \rangle$;
+				\end{itemize}
+			
+		\item $(E/\langle A \rangle, \phi(P_B), \phi(Q_B), E/\langle	B \rangle, \psi(P_A), \psi(Q_A), E/\langle C \rangle)$, where $A, B, \phi, \psi$ are as above, and where $C \in E$ is a uniformly random point of order $\ell_A^{\varepsilon_A}\ell_B^{\varepsilon_B}$;
+	\end{enumerate}
+	determine from which distribution the tuple is sampled.
+\end{problem}
+
+Assuming SSDDH is hard, it could be formally proven that the security of the key exchange against those adversaries who can see all messages sent between Alice and Bob, but who do not modify them. For technical details see \cite{TowardsQuantumRes}.
+
+SSDDH is a special instance of isogeny path problem. Then it is possible that special slgorithms could break SIDH without solving the generic isogeny path problem. As an illustration, consider the following problem.
+
+\begin{problem}
+	Let $E, \ell_A, \ell_B, \varepsilon_A, \varepsilon_B, P_A, Q_A, P_B, Q_B$ be the parameters of an SIDH protocol. 
+	Let $A \in E$ be a point of order $\ell_A^{\varepsilon_A}$, and let $\phi: E \to E/\langle A \rangle$. Given $E/\langle A \rangle, \phi(P_B)$ and $\phi(Q_B)$ compute $\phi(R)$ for an arbitrary point $R \in E$ of order $\ell_A^{\varepsilon_A}$.
+\end{problem}
+
+Solving this problem reaveal the secret $\langle A \rangle$. Indeed, $\phi(R)$ is an element of $\ker\hat{\phi}$, from which we can recover $\hat{\phi}$ and $\phi$, and thus $\langle A \rangle$. 
+
+Although there is no efficient algorithms to solve SSDDH at the time of writing, several polynomial-time attacks have appeared  against variations of SIDH.
+
+Finally, we have to note that there is a quantum subexponential attack \cite{IsogeniesSSEC} in case where coth $E$ and $E/\langle A \rangle$ are defined over $\mathbb{F}_p$.
+
 \newpage
 \begin{thebibliography}{}
+	\bibitem{IsogeniesSSEC} Jean-François Biasse, David Jao, and Anirudh Sankar. \textit{A quantum algorithm for computing isogenies between supersingular elliptic curves}. In International Conference in Cryptology in India, pages 428-442, Springer, 2014.
+	
 	\bibitem{PurelyInseparable} Lindsay N. Childs. \textit{Purely Inseparable Field Extension}. \url{http://www.math.cornell.edu/~dkmiller/galmod/Childs_purely-inseparable.pdf}
 	
 	\bibitem{IsogenyCryptoDeFeo} Luca De Feo. \textit{Mathematics of isogeny based cryptography}, 2017.
@@ -784,6 +845,10 @@ The analogues between Diffie-Hellman protocols described above are summarized in
 	\bibitem{TowardsQuantumRes} Luca De Feo, David Jao, Jerome Plut. \textit{Towards Quantum-Resistant Cryptosystems From Supersingular Elliptic Curve Isogenies}, Journal of Mathematical Cryptology, 2014, 8 (3), pp. 209-247. \url{https://eprint.iacr.org/2011/506.pdf}
 	
 	\bibitem{DiffieHellman} Whitfield Diffie, Martin E. Hellman. \textit{New Directions in Cryptography}. IEE Transactions of Information Theory, IT-22(6):644-654, 1976.
+	
+	\bibitem{Elkies92} Noam D. Elkies. \textit{Explicit isogenies.} 1992.
+	
+	\bibitem{Elkies98} Noam D. Elkies. \textit{Elliptic and modular curves over finite fields and related computational issues.} In Computational perspectives on number theory (Chicago, IL, 1995), volume 7 of Studies in Advanced Mathematics, pages 21-76, Providence, RI, 1998, AMS International Press.
 	
 	\bibitem{Galbraith-PKC} Steven D. Galbraith. \textit{Mathematics of Public Key Cryptography}. Cambridge University Press, 2012.
 	
