@@ -217,7 +217,7 @@ When $q=p$ is a prime greater than 3 this is equivalent to having the trace of F
 
 In this section we are going to give some examples of supersingular curves.
 
-Using definitions given in previous section may not always be a convenient way to identify a supersingular curves. But from those equivalent definitions we see thath up to isomorphism, there are only finitely many elliptic curves with Hasse invariant 0, since each has $j$-invariant in $\mathbb{F}_{p^2}$. For $p = 2$, once can easily check that the only one supersingular elliptic curve is 
+Using definitions given in previous section may not always be a convenient way to identify a supersingular curves. But from those equivalent definitions we see that up to isomorphism, there are only finitely many elliptic curves with Hasse invariant 0, since each has $j$-invariant in $\mathbb{F}_{p^2}$. For $p = 2$, once can easily check that the only one supersingular elliptic curve is 
 	\[ E: y^2 + y = x^3. \]
 For $p > 2$, the following theorem gives a simple criterion for determining whether an elliptic curve is supersingular.
 
@@ -228,7 +228,7 @@ For $p > 2$, the following theorem gives a simple criterion for determining whet
 					\[ E: y^2 = f(x) \]
 				where $f(x) \in K[x]$ is a cubic polynomial with distinct roots (in $\bar{K}$). Then $E$ is supersingular if and only if the coefficient of $x^{p - 1}$ in $f(x)^{(p - 1)/2}$ is zero.
 			
-			\item  Let $m = (p - 1)/2$, and define a polynomial
+			\item  Let $m = (p - 1)/2$, and define the polynomial
 					\[H_p(t) = \sum_{i = 0}^{m} \binom{m}{i}^2t^i. \]
 				Let $\lambda \in \bar{K}$, $\lambda \neq 0, 1$. Then the elliptic curve
 					\[E: y^2 = x(x - 1)(x - \lambda)  \]
@@ -236,8 +236,8 @@ For $p > 2$, the following theorem gives a simple criterion for determining whet
 			
 			\item The polynomial $H_p(t)$ has distinct roots in $\bar{K}$. Up to isomorphism, there are exactly
 					\[ [\frac{p}{12}] + \varepsilon_p \]
-				supersingular elliptic curves in characteristic $p$, where $\varepsilon_p = 1$, and for $p \geq 5$,
-					\[\varepsilon_p = 0, 1, 1, 2 \quad \textrm{if} \quad p \cong 1, 5, 7, 11 (\mathrm{mod}12). \]
+				supersingular elliptic curves in characteristic $p$, where $\varepsilon_3 = 1$, and for $p \geq 5$,
+					\[\varepsilon_p = 0, 1, 1, 2 \quad \textrm{if} \quad p \equiv 1, 5, 7, 11 \pmod{12}. \]
 			(Cf. \cite[V, \S4, Theorem 4.1]{Silverman})
 		\end{enumerate}
 \end{theorem}
@@ -247,7 +247,7 @@ For $p > 2$, the following theorem gives a simple criterion for determining whet
 		\[E:  y^2 = x^3 + 1\]
 	supersingular?
 	
-	Notice this curve has $j(E) = 0$. From the criterion of \cref{thm1}(a), we must compute the coefficient of $x^{p-1}$ in $(x^3 + 1)^{(p-1)/2}$. If $p \cong 2 \mathrm{mod} 3$, then there is no $x^{p-1}$ term, so $E$ is supersingular; while if $p \cong 1 \mathrm{mod} 3$, then the coefficients is $\binom{(p-1)/2}{(p-1)/3}$, which is non-zero modulo $p$, so in this case $E$ is ordinary.
+	Notice this curve has $j(E) = 0$. From the criterion of \cref{thm1}(a), we must compute the coefficient of $x^{p-1}$ in $(x^3 + 1)^{(p-1)/2}$. If $p \equiv 2 \pmod{3}$, then there is no $x^{p-1}$ term, so $E$ is supersingular; while if $p \equiv 1 \pmod{3}$, then the coefficients is $\binom{(p-1)/2}{(p-1)/3}$, which is non-zero modulo $p$, so in this case $E$ is ordinary.
 \end{example}
 
 \begin{example}
@@ -255,7 +255,7 @@ For $p > 2$, the following theorem gives a simple criterion for determining whet
 		\[E: y^2 = x^3 + x \]
 	is supersingular.
 	
-	This is determined by the coefficient of $x^{(p-1)/2}$ in $(x^2 + 1)^{(p-1)/2}$, which equals $0$ if $p \cong 3 \mathrm{mod} 4$ and $\binom{(p-1)/2}{(p-1)/4}$ if $p \cong 1 \mathrm{mod} 4$. Hence $E$ is supersingular if $p \cong 3 \mathrm{mod} 4$ and ordinary if $p \cong 1 \mathrm{mod} 4$.
+	This is determined by the coefficient of $x^{(p-1)/2}$ in $(x^2 + 1)^{(p-1)/2}$, which equals $0$ if $p \equiv 3 \pmod{4}$ and $\binom{(p-1)/2}{(p-1)/4}$ if $p \equiv 1 \pmod{4}$. Hence $E$ is supersingular if $p \equiv 3 \pmod{4}$ and ordinary if $p \equiv 1 \pmod{4}$.
 \end{example}
 
 \begin{example}
@@ -271,7 +271,7 @@ We start this section with a notion of isogeny.
 	\begin{definition} \label{isogeny}
 		Let $E_1$ and $E_2$ be elliptic curves defined over a finite field $\mathbb{F}_q$ of characteristic $p$. An \textit{isogeny} $\phi: E_1 \to E_2$ defined over $\mathbb{F}_q$ is a non-constant morphism that maps the identity into the identity (and this a is group homomorphism) (Cf. \cite[2.1]{HardEasyProbs}).
 	\end{definition}
-Two elliptic curves $E_1$ and $E_2$ defined over $\mathbb{F}_q$ are said to be \textit{isogenous} over $\mathbb{F}_q$ if there exists an isgony $\phi: E_1 \to E_2$ defined over $\mathbb{F}_q$.
+Two elliptic curves $E_1$ and $E_2$ defined over $\mathbb{F}_q$ are said to be \textit{isogenous} over $\mathbb{F}_q$ if there exists an isogeny $\phi: E_1 \to E_2$ defined over $\mathbb{F}_q$.
 
 \begin{theorem}[Sato-Tate]
 	Two elliptic curves $E_1$ and $E_2$ are isogenous over $\mathbb{F}_q$ if and only if $\#E_1(\mathbb{F}_q) = \#E_2(\mathbb{F}_q)$ (Cf. \cite[Theorem 13]{IsogenyCryptoDeFeo}). 
@@ -301,7 +301,7 @@ respectively.
 
 \subsection{Supersingular isogeny graph}
 
-For the supersingular isogey graph we work over $\bar{\mathbb{F}}_p$. The graph is finite. Indeed, \cref{thm1} (c) implies $\frac{p}{12} - 1 < \#X_{E, \bar{\mathbb{F}}_p, S} < \frac{p}{12} + 2$. Note that it suffices to consider elliptic curves defined over $\mathbb{F}_{p^2}$ (although the isogenies between them are over $\bar{\mathbb{F}}_p$ in genereal).
+For the supersingular isogeny graph we work over $\bar{\mathbb{F}}_p$. The graph is finite. Indeed, \cref{thm1} (c) implies $\frac{p}{12} - 1 < \#X_{E, \bar{\mathbb{F}}_p, S} < \frac{p}{12} + 2$. Note that it suffices to consider elliptic curves defined over $\mathbb{F}_{p^2}$ (although the isogenies between them are over $\bar{\mathbb{F}}_p$ in genereal).
 
 In contrast to the ordinary case , the supersingular graph is always connected using isogenies of any fixed degree (Cf. \cite[2.4]{Mestre}).
 
@@ -309,9 +309,9 @@ In contrast to the ordinary case , the supersingular graph is always connected u
 	Let $p$ be a prime and let $E$ and $\tilde{E}$ be supersingular elliptic curves over $\bar{\mathbb{F}}_p$. Let $\ell$ be a prime different from $p$. Then there is an isogeny from $E$ to $\tilde{E}$ over $\bar{\mathbb{F}}_p$ whose degree is a power of $\ell$ (Cf. \cite[2.4]{Mestre}).
 \end{theorem}
 
-Hence, one can choose any prime $\ell$ and consider the $\ell$-isogeny graphh $X_{e,\bar{\mathbb{F}}_p, {\ell}}$ on supersingular curves over $\bar{\mathbb{F}}_p$. It follows that the graph is $(\ell + 1)$-regular and connected.
+Hence, one can choose any prime $\ell$ and consider the $\ell$-isogeny graph $X_{E,\bar{\mathbb{F}}_p, {\ell}}$ on supersingular curves over $\bar{\mathbb{F}}_p$. It follows that the graph is $(\ell + 1)$-regular and connected.
 
-Now we will give some examples of supersingular isogeny graphs (cf. \cref{SIG83.figure}, \cref{SIG103.figure}, \cref{SIG101.figure})
+Now we will give some examples of supersingular isogeny graphs (Cf. \cref{SIG83.figure}, \cref{SIG103.figure}, \cref{SIG101.figure})
 
 \begin{figure}[h]
 \begin{center}
@@ -473,7 +473,7 @@ Elliptic curves are widely used in modern cryptography. One of the most famous a
 
 \subsection{Classic Diffie-Hellman}
 
-We will first consider the original protocol, which was invented in the 1970s by Whitfield Diffie and Martin Hellman (cf. \cite{DiffieHellman}), and constitutes the first practical example of public key cryptography. The two communicating parties are customarily called \textit{Alice} and \textit{Bob}, and the listening third party is a character called \textit{Eve}. 
+We will first consider the original protocol, which was invented in the 1970s by Whitfield Diffie and Martin Hellman (Cf. \cite{DiffieHellman}), and constitutes the first practical example of public key cryptography. The two communicating parties are customarily called \textit{Alice} and \textit{Bob}, and the listening third party is a character called \textit{Eve}. 
 
 Firstly, Alice and bob agree on a set of public parameters:
 	\begin{itemize}
@@ -542,7 +542,7 @@ We will restrict to undirected graphs. The \textit{diameter} of a connected grap
 It is convenient to identify functions on $V$ with vectors in $\mathbb{R}^n$, and therefore consider the adjacency matrix as a self-adjoint operator in $L^2(V)$. Then we can bound the eigenvalues of $G$.
 
 \begin{proposition}
-	if $G$ is a $k$-regular graph, then its largest and smallest eigenvalues $\lambda_1$ and $\lambda_n$ satisfy
+	If $G$ is a $k$-regular graph, then its largest and smallest eigenvalues $\lambda_1$ and $\lambda_n$ satisfy
 		\[ k = \lambda_1 \geq \lambda_n \geq -k. \]
 		(Cf. \cite{Tao})
 \end{proposition}
@@ -556,32 +556,32 @@ It is convenient to identify functions on $V$ with vectors in $\mathbb{R}^n$, an
 
 A sequence $G_i = (V_i, E_i)$ of $k$-regular graphs with $\#V_i \to \infty$ is said to be a one-sided (respectively two-sided) \textit{expander family} if there is an $\varepsilon > 0$ such that $G_i$ is a one-sided (respectively two-sided) $\varepsilon$-expander for all sufficiently large $i$.
 
-Expander families have a lot of applications in theoretical computer science due to their pseudo-randomness propreties: they are useful for pseudo-random number generators contructions, error-correcting codes, probabilistic checkable proofs and cryptographic primitives. We can describe them as having shoert diameter and rapidly mixing walks.
+Expander families have a lot of applications in theoretical computer science due to their pseudo-randomness propreties: they are useful for pseudo-random number generators contructions, error-correcting codes, probabilistic checkable proofs and cryptographic primitives. We can describe them as having short diameter and rapidly mixing walks.
 
 \begin{proposition}
-	Let $G$ be a $k$-regular one sided $\varepsilon$-expander. For any vertex $v$ and eny radius $r > 0$, let $B(v, r)$ be the ball of vertices at distance at most $r$ from $v$. Then, there is a constant $c > 0$, depending  only on $k$ and $\varepsilon$, such that
+	Let $G$ be a $k$-regular one sided $\varepsilon$-expander graph. For any vertex $v$ and eny radius $r > 0$, let $B(v, r)$ be the ball of vertices at distance at most $r$ from $v$. Then, there is a constant $c > 0$, depending  only on $k$ and $\varepsilon$, such that
 		\[ \#B(v, r) \geq\min((1 + c)^r, \#V). \]
 \end{proposition}
 
-This shows that the diameter of an expander graph is bounded by $O(\log n)$, where the constant depends only on $k$ and $\varepsilon$. A \textit{random walk} of length $i$ is a path $v_1 \to \cdots v_i$, defined by the random process that selects $v_i$ uniformly at random among the neighbors of $v_{i-1}$. The next proposition says that, in an expander graph, random walks of length close to its diameter terminate on any vertex with probability close to uniform.
+This shows that the diameter of an expander graph is bounded by $O(\log n)$, where the constant depends only on $k$ and $\varepsilon$. A \textit{random walk} of length $i$ is a path $v_1 \to \cdots v_i$, defined by the random process that selects $v_i$ uniformly at random among the neighbors of $v_{i-1}$. The next proposition says that, in an expander graph, random walks of length close to its diameter terminate on any vertex with probability close to uniform (Cf. \cite{IsogenyCryptoDeFeo}).
 
-\begin{proposition}
+\begin{proposition}[Mixing theorem]
 	Let $G = (V, E)$ be a $k$-regular two-sided $\varepsilon$-expander. Let $F \subset V$ be any subset of the vertices of $G$, and let $v$ be any vertex in $V$. Then a random walk of length at least
 		\[ \frac{\log\#F^{1/2}/2\#V}{\log(1 - \varepsilon)} \]
-	starting from $v$ will land in $F$ with probability at least $\#F/2\#V$.
+	starting from $v$ will land in $F$ with probability at least $\#F/2\#V$ (Cf. \cite{JaoMillerVenkatesan}).
 \end{proposition}
 
-Now we come to one of the most powerful applications of isogeny graphs. There exist at least two key exchange protocols somewhat similar to the Diffie-Hellman protocol. Both of them are significantly less efficient than ECDH, but nevertheless they are relecant because of their conjectured \textit{quantum security}. %ADD THERE SOMETHING ABOUT QUANTUM-SECURITY 
+Now we come to one of the most powerful applications of isogeny graphs. There exist at least two key exchange protocols somewhat similar to the Diffie-Hellman protocol. Both of them are significantly less efficient than ECDH, but nevertheless they are relevant because of their conjectured \textit{quantum security}. %ADD THERE SOMETHING ABOUT QUANTUM-SECURITY 
 The fisrt one was proposed by Rostovtsev and Stolbunov in  \cite{RostovstsevStolbunov}, but we will discuss only the second one, which first was introduced by Jao and De Feo in \cite{TowardsQuantumRes}.
 
-We said that one should avoid supersingular ellipric curves in ECDH. But when we come to isogeny graphs, compared to the ordinary case, graphs of supersingular isogenies have two attractive features for constructing key exchange protocols. 
+We said before that one should avoid supersingular elliptic curves in ECDH. But when we come to isogeny graphs, compared to the ordinary case, graphs of supersingular isogenies have two attractive features for constructing key exchange protocols. 
 	\begin{itemize}
-		\item One isogeny degree is sufficient to obtain an expander graph. BY choosing one small prime degree, we have the opportunity to construct more efficient protocols.
+		\item One isogeny degree is sufficient to obtain an expander graph. By choosing one small prime degree, we have the opportunity to construct more efficient protocols.
 		
 		\item  There is no action of an abelian group on them, so it seems harder to use quantum computers to speed up the supersingular isogeny path problem.
 	\end{itemize}
 
-It turns out that there is an algebraic structure acting on supersingular graphs. We have seen that, if $E$ is a supersingular curve defined over $\mathbb{F}_p$ or $\mathbb{F}_{p^2}$, then its endomorphism ring $End(E)$ is isomorphic to an order in the quaternion algebra $\mathbb{Q}_{p,\infty}$, ramified at $p$ and at infinity. Moreover, supersingular curves are in correspondence with the maximal orders of $\mathbb{Q}_{p, \infty}$and their left ideals act on the graph like isogenies.
+It turns out that there is an algebraic structure acting on supersingular graphs. We have seen that, if $E$ is a supersingular curve defined over $\mathbb{F}_p$ or $\mathbb{F}_{p^2}$, then its endomorphism ring $End(E)$ is isomorphic to an order in the quaternion algebra. Moreover, supersingular curves are in correspondence with the maximal orders of quaternion algebra and their left ideals act on the graph like isogenies.
 
 The key idea of the Supersingular Isogeny Diffie-Hellman protocol (SIDH) is to let Alice and Bob take random walks in two distinct isogeny graphs on the same vertex set. In practice we choose a large enough prime $p$, and two small primes $\ell_A$ and $\ell_B$. The vertex set consists of the supersingular $j$-invariants defined over $\mathbb{F}_{p^2}$. Alice's graph is the graphs made of $\ell_A$-isogenies, and Bob's is made of $\ell_B$-isogenies. A very simple example of such graphs is shown on \cref{SIG97-2-3:figure}, where $p = 97, \ell_A = 2$ and $\ell_B = 3$.
 
@@ -630,7 +630,7 @@ The key idea of the Supersingular Isogeny Diffie-Hellman protocol (SIDH) is to l
 	\label{SIG97-2-3:figure}
 \end{figure}
 
-But this information is not sufficient to define a key exchange protocol, because there is no canonical way of labeling the edges of these graphs. For this purpose we introduce a construction that uses the group structure of elliptic curves. Recall that a separable isogeny $\phi$ is uniquelly defined by its kernel and that in this case $\deg\phi = \ker\phi$. A walk of length $\varepsilon_A$ in the $\ell_A$-isogeny graph corresponds to a kernel of a size $\ell_A^{\varepsilon_A}$, and this kernel is cyclic if and only if the walk does not backtrack.
+But this information is not sufficient to define a key exchange protocol, because there is no canonical way of labeling the edges of these graphs. For this purpose we introduce a construction that uses the group structure of elliptic curves. Recall that a separable isogeny $\phi$ is uniquelly defined by its kernel and that in this case $\deg\phi = \#\ker\phi$. A walk of length $\varepsilon_A$ in the $\ell_A$-isogeny graph corresponds to a kernel of a size $\ell_A^{\varepsilon_A}$, and this kernel is cyclic if and only if the walk does not backtrack.
 
 For this reason, if Alice chooses a secret walk of length $\varepsilon_A$ it is equivalent to choosing a secret cyclic subgroup $\langle A \rangle \subset E[\ell_A^{\varepsilon_A}]$. Bob respectively chooses his own secret $\langle B \rangle \subset E[\ell_B^{\varepsilon_B}]$, then there is a well defined subgroup $\langle A \rangle + \langle B \rangle = \langle A, B \rangle$, defining an isogeny to $E/\langle A, B \rangle$. Since we choose $\ell_A \neq \ell_B$, the group $\langle A, B \rangle$ is cyclic of order $\ell_A^{\varepsilon_A} \ell_B^{\varepsilon_B}$. This is illustrated in \cref{SIDH-diagram:figure}.
 
@@ -668,7 +668,7 @@ For this reason, if Alice chooses a secret walk of length $\varepsilon_A$ it is 
 	Bob's secrets. Quantities known to Alice are drawn in blue, those known to Bob are drawn in red.} \label{SIDH-diagram:figure}
 \end{figure}
 
-We would like to define a protocol where Alice and Bob choose random cyclic subgroups $\langle A \rangle$ and $\langle B \rangle$ in some large enough torsion groups and exchanhe enough information to both compute $E/ \langle A, B \rangle$ (up to isomorphism), without revealing their respective secrets. But we are faced two difficulties:
+We would like to define a protocol where Alice and Bob choose random cyclic subgroups $\langle A \rangle$ and $\langle B \rangle$ in some large enough torsion groups and exchange enough information to both compute $E/ \langle A, B \rangle$ (up to isomorphism), without revealing their respective secrets. But we are faced two difficulties:
 
 	\begin{enumerate}
 		\item The points of $\langle A \rangle$ (or $\langle B \rangle$) may not be rational.
@@ -676,10 +676,10 @@ We would like to define a protocol where Alice and Bob choose random cyclic subg
 		\item The diagram in \cref{SIDH-diagram:figure} shows no way how Alice and Bob could compute shared secret $E/\langle A, B \rangle$ without revealing their secrets.
 	\end{enumerate}
 
-Both problems could be solved by controlling the group structureof our supersingular curves. It is hard in ordinary case, but easy in supersingular case, as the following theorem shows:
+Both problems could be solved by controlling the group structure of our supersingular curves. It is hard in ordinary case, but easy in supersingular case, as the following theorem shows:
 
 \begin{theorem}[Group structure of supersingular curves]
-	Let $p$ be a prime, and let $E$ be a supersingular curve defined over a finite field $\mathbb{F}_q$ with $q = p^m$ elements. Let $t$ be the trace of the Frobeniys endomorphism of $E/\mathbb{F}_q$, then one of the following is true:
+	Let $p$ be a prime, and let $E$ be a supersingular curve defined over a finite field $\mathbb{F}_q$ with $q = p^m$ elements. Let $t$ be the trace of the Frobenius endomorphism of $E/\mathbb{F}_q$, then one of the following is true:
 	
 		\begin{itemize}
 			\item $m$ is odd and
@@ -709,12 +709,12 @@ Both problems could be solved by controlling the group structureof our supersing
 		
 		\item If $t = 0$, then $E(\mathbb{F}_q)$ is either cyclic, or isomorphic to $\mathbb{Z}/ \frac{q + 1}{2}\mathbb{Z} \oplus \mathbb{Z}/2\mathbb{Z}$;
 		
-		\item  If $t \mp 2\sqrt{q}$, then $E(\mathbb{F}_q) \simeq (\mathbb{Z}/(\sqrt{q} \pm 1)\mathbb{Z})^2$.
+		\item  If $t = \mp 2\sqrt{q}$, then $E(\mathbb{F}_q) \simeq (\mathbb{Z}/(\sqrt{q} \pm 1)\mathbb{Z})^2$.
 	\end{itemize}
 (Cf. \cite{Waterhouse},\cite{MOV})
 \end{theorem}
 
-As we metioned above, the only one case that we are concerned with is when $q = p^2$, and $E(\mathbb{F}_q) \simeq (\mathbb{Z}/(p \pm 1)\mathbb{Z})^2$. We can choose $p$ so that $E(\mathbb{F}_q)$ contains two large subgroups $E[\ell_A^{\varepsilon_A}]$ and $E[\ell_B^{\varepsilon_B}]$of coprime order. Hence, once $\ell_A^{\varepsilon_A}$ and $\ell_B^{\varepsilon_B}$ are fixed, we look for a prime of the form $p = \ell_A^{\varepsilon_A} \ell_B^{\varepsilon_B}f \mp 1$, where $f$ is a small cofactor. In practice, such primes are abundant, and we can easily take $f = 1$. This solves the first problem mentioned above: $E(\mathbb{F}_q)$ now contains $\ell_A^{\varepsilon_A - 1}(\ell_A + 1)$  cyclic subgroups of order $\ell_A^{\varepsilon_A}$, each defining a distinct isogeny; hence, a single point $A \in E(\mathbb{F}_q)$ is enough to represent an isogeny walk of length $\varepsilon_A$.
+As we mentioned above, the only one case that we are concerned with is when $q = p^2$, and $E(\mathbb{F}_q) \simeq (\mathbb{Z}/(p \pm 1)\mathbb{Z})^2$. We can choose $p$ so that $E(\mathbb{F}_q)$ contains two large subgroups $E[\ell_A^{\varepsilon_A}]$ and $E[\ell_B^{\varepsilon_B}]$ of coprime order. Hence, once $\ell_A^{\varepsilon_A}$ and $\ell_B^{\varepsilon_B}$ are fixed, we look for a prime of the form $p = \ell_A^{\varepsilon_A} \ell_B^{\varepsilon_B}f \mp 1$, where $f$ is a small cofactor. In practice, such primes are abundant, and we can easily take $f = 1$. This solves the first problem mentioned above: $E(\mathbb{F}_q)$ now contains $\ell_A^{\varepsilon_A - 1}(\ell_A + 1)$  cyclic subgroups of order $\ell_A^{\varepsilon_A}$, each defining a distinct isogeny; hence, a single point $A \in E(\mathbb{F}_q)$ is enough to represent an isogeny walk of length $\varepsilon_A$.
 
 Solution of the second problem lies in letting Alice and Bob publish some additional information to help each other to compute the shared secret. To set up the cryptosystem, they have publicly agreed the following:
 
@@ -789,7 +789,7 @@ Velu's formulas (\cite[Proposition 38]{IsogenyCryptoDeFeo}) give a solution to t
 	Given two elliptic curves $E, E'$ over a finite field, isogenous of known degree $d$, find an isogeny $\phi: E \to E'$ of degree $d$.
 \end{problem}
 
-Up to automorphism, the isogeny $\phi$ is typically unique. The first algorithm was given \cite{Elkies92}, \cite{Elkies98} and had complexity $O(d^3)$ in general, and $\bar{O}(d)$ in special context  of the SEA algorithm. There also exist other alternate with complexity $O(d^2)$.
+Up to automorphism, the isogeny $\phi$ is typically unique. The first algorithm was given in \cite{Elkies98} and had complexity $O(d^3)$ in general, and $\bar{O}(d)$ in special context  of the SEA algorithm. There also exist other alternate with complexity $O(d^2)$.
 
 \begin{problem}[Isogeny path]
 	Given two elliptic curves $E, E'$ over a finite field $K$, such that, such that $\#E = \#E'$, find an isogeny $\phi: E \to E'$ of smooth degree.
@@ -840,13 +840,11 @@ Finally, we have to note that there is a quantum subexponential attack \cite{Iso
 	
 	\bibitem{PurelyInseparable} Lindsay N. Childs. \textit{Purely Inseparable Field Extension}. \url{http://www.math.cornell.edu/~dkmiller/galmod/Childs_purely-inseparable.pdf}
 	
-	\bibitem{IsogenyCryptoDeFeo} Luca De Feo. \textit{Mathematics of isogeny based cryptography}, 2017.
+	\bibitem{IsogenyCryptoDeFeo} Luca De Feo. \textit{Mathematics of isogeny based cryptography},Lecture notes, École Mathématique Africaine, Thiès, Sénégal, 2017, 44 pp. \url{https://arxiv.org/abs/1711.04062}
 	
 	\bibitem{TowardsQuantumRes} Luca De Feo, David Jao, Jerome Plut. \textit{Towards Quantum-Resistant Cryptosystems From Supersingular Elliptic Curve Isogenies}, Journal of Mathematical Cryptology, 2014, 8 (3), pp. 209-247. \url{https://eprint.iacr.org/2011/506.pdf}
 	
 	\bibitem{DiffieHellman} Whitfield Diffie, Martin E. Hellman. \textit{New Directions in Cryptography}. IEE Transactions of Information Theory, IT-22(6):644-654, 1976.
-	
-	\bibitem{Elkies92} Noam D. Elkies. \textit{Explicit isogenies.} 1992.
 	
 	\bibitem{Elkies98} Noam D. Elkies. \textit{Elliptic and modular curves over finite fields and related computational issues.} In Computational perspectives on number theory (Chicago, IL, 1995), volume 7 of Studies in Advanced Mathematics, pages 21-76, Providence, RI, 1998, AMS International Press.
 	
@@ -854,19 +852,21 @@ Finally, we have to note that there is a quantum subexponential attack \cite{Iso
 	
 	\bibitem{Hartshorne} Robin Hartshorne. \textit{Algebraic Geometry}, volume 52 of \textit{Graduate Texts in Mathematics}. Springler, New-York, 1977.
 	
+	\bibitem{JaoMillerVenkatesan} David Jao, Stephen D. miller, and Ramarathnam Venkatesan. \textit{Expander graphs based on GRH with an application to elliptic curve cryptography.} Journal of Number Theory, 129(6), 2009.
+	
 	\bibitem{Joux} Antoine Joux. \textit{Algorithmic cryptanalysis}. CRC Press, 2009.
 	
 	\bibitem{Koblitz} Neal Koblitz. \textit{Elliptic Curve Cryptosystems}. Mathematics of Computation, 48:203-209, 1987.
 	
 	\bibitem{Lang} Serge Lang. \textit{Algebra}, volume 211 of \textit{Graduate Texts in Mathematics}. Springer-Verlag, New York, 2002.
 
-	\bibitem{Mestre} J-F Mestre. \textit{La methode des graphes. Exemples et applications}, 2004.
+	\bibitem{Mestre} Jean-François Mestre. \textit{La méthode des graphes. Exemples et applications}. In Proceedings of the international conference on class numbers and fundamental unitsof algebraic number fields (Katata, 1986), Nagoya, 1986. Nagoya University.
 	
 	\bibitem{Miller} Victor Miller. \textit{Use of elliptic curves in cryptography}. In Advances in Cryptology, CRYPTO 85, pages 417-426. Springer Verlag, LN CS 218, 1986.
 	
 	\bibitem{MOV} A. Menezes, T. Okamoto, S. Vanstone. \textit{Reducing elliptic curve logarithms to a finite field}. IEEE Transactions on Information Theory, 39:1639-1646, 1993.
 	
-	\bibitem{HardEasyProbs} Christophe Petit, Kristin Lauter. \textit{Hard and Easy Problems for Supersingular Isogeny Graphs}. 2018
+	\bibitem{HardEasyProbs} Christophe Petit, Kristin Lauter. \textit{Hard and Easy Problems for Supersingular Isogeny Graphs}. Cryptology ePrint Archive, Report 2017/962, 2017. \url{https://eprint.iacr.org/2017/962}
 	
 	\bibitem{RostovstsevStolbunov} Alexander Rostovtsev and Anton Stolbunov. \textit{Public-key cryptosystem based on isogenies}. Cryptology ePrint Archive, Report 2006/145, 2006. \url{http://eprint.iacr.org/2006/145}
 	
