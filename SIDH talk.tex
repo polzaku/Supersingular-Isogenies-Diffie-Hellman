@@ -286,9 +286,9 @@
 
 \end{frame}
 
-\begin{frame}
-\frametitle{Security of ECDH}
-\end{frame}
+%\begin{frame}
+%\frametitle{Security of ECDH}
+%\end{frame}
 
 \subsection{Supersingular Isogeny Diffie-Hellman}
 
@@ -417,11 +417,107 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Solutions}
+\frametitle{Solution of the 1st problem}
 
 	\begin{itemize}
-		\item In case of \alert{supersingular} curves, we can control the group structure. It turns out that as we are dealing with the field $\mathbb{F}_p^2$ then
-			\[ E(\mathbb{F}_q) \simeq (\mathbb{Z}/(p \pm 1)\mathbb{Z})^2 \].
+		\item In case of \alert{supersingular} curves, we can control the group structure. It turns out that as we are dealing with the field $\mathbb{F}_{p^2}$ then
+			\[ E(\mathbb{F}_{p^2}) \simeq (\mathbb{Z}/(p \pm 1)\mathbb{Z})^2. \]
+			
+		\item We choose $p$ so that $E(\mathbb{F}_{p^2})$ contains two large subgroups $E[\ell_A^{\varepsilon_A}]$ and $E[\ell_B^{\varepsilon_B}]$ of coprime order.
+		
+		\item Once subgroups are fixed, we look for a prime of the form $p = \ell_A^{\varepsilon_A} \ell_B^{\varepsilon_B}f \mp 1$, where $f$ is a small cofactor.
+			\begin{itemize}
+				\item \emph{On practice}, we can choose $f = 1$.
+			\end{itemize}
 	\end{itemize}
+	$\implies$ $E(\mathbb{F}_p^2)$ contains $\ell_A^{\varepsilon_A - 1}(\ell_A + 1)$  cyclic subgroups of order $\ell_A^{\varepsilon_A}$, each defining a distinct isogeny; $\implies$ a single point $A \in E(\mathbb{F}_q)$ is enough to represent an isogeny walk of length $\varepsilon_A$.
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Solution of the 2nd problem}
+	Solution is to publish some additional data.
+	
+	\begin{itemize}
+		\item They have publicly agreed on a prime $p$ and a supersingular curve $E$ such that
+			\[ E(\mathbb{F}_{p^2}) \simeq (\mathbb{Z}/\ell_A^{\varepsilon_A}\mathbb{Z})^2 \oplus (\mathbb{Z}/\ell_B^{\varepsilon_B}\mathbb{Z})^2 \oplus (\mathbb{Z}/f\mathbb{Z})^2. \]
+		
+		\item They fix public bases of their respective torsion groups:
+		\[ E[\ell_A^{\varepsilon_A}] = \langle P_A, Q_A \rangle, \]
+		\[ E[\ell_B^{\varepsilon_B}] = \langle P_B, Q_B \rangle. \]
+		
+		\item They choose random secret subgroups defined as follows
+		\[ \langle A \rangle = \langle [m_A]P_A + [n_A]Q_A \rangle \subset E[\ell_A^{\varepsilon_A}], \]
+		\[ \langle B \rangle = \langle [m_B]P_B +[n_B]Q_B \rangle \subset E[\ell_B^{\varepsilon_B}]. \]
+		
+		
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Solution of the 2nd problem}
+	\begin{itemize}
+		
+		\item After computing secret isogenies $\alpha$ and $\beta$, Alice publishes $\alpha(P_B)$ and $\alpha(Q_B)$ and Bob publishes $\beta(P_A)$ and $\beta(Q_A)$.
+		
+		\item Alice computes $\beta(A) = [m_A]\beta(P_A) + [n_A]\beta(Q_A)$ and Bob computes $\alpha(B) = [m_B]\alpha(P_B) + \alpha(Q_B)$.
+		
+		\item They compute isogenies $\alpha', \beta'$, whose kernels are generated respectively by $\langle \beta(A) \rangle$ and $\langle \alpha(A) \rangle$
+		$\implies$ They compute the shared secret $E/\langle A, B \rangle$.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+
+\begin{figure}
+
+	\begin{tabular}{l *{2}{p{23ex}<{\centering}}}
+		\hline
+		Parameters & \multicolumn{2}{l}{Primes $\ell_A,\ell_B, p=\ell_A^{\varepsilon_A}\ell_B^{\varepsilon_B}f \mp 1$,}\\
+		& \multicolumn{2}{l}{A supersingular curve $E$ over $\mathbb{F}_{p^2}$ of order $(p \pm 1)^2$,}\\
+		& \multicolumn{2}{l}{A basis $\langle P_A,Q_A \rangle$ of $E[\ell_A^{\varepsilon_A}]$,}\\
+		& \multicolumn{2}{l}{A basis $\langle P_B,Q_B \rangle$ of $E[\ell_B^{\varepsilon_B_B}]$,}\\
+		\hline
+		& {\bf Alice} & {\bf Bob}\\
+		\hline
+		Random secret & $A=[m_A]P_A+[n_A]Q_A$ & $B=[m_B]P_B+[n_B]Q_B$\\[1ex]
+		Secret isogeny & $\alpha:E\to E_A=E/\alpha A \rangle $ & $\beta:E\to E_B=E/\langle B \rangle$\\[1ex]
+		Exchange data &  \hfill $E_A,\alpha(P_B),\alpha(Q_B) \longrightarrow$ & $\longleftarrow E_B,\beta(P_A),\beta(Q_A)$ \hfill\strut \\[1ex]
+		Shared secret & $E/\langle A,B \rangle = E_B/\langle \beta(A) \rangle$ & $E/\langle A,B \rangle = E_A/ \langle \alpha(B)\rangle$
+	\end{tabular}
+	
+	\caption{Supersingular Isogeny Diffie-Hellman key exchange protocol.}
+	\label{fig:sidh-prot}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Security of SIDH}
+
+???
+\end{frame}
+
+\begin{frame}
+\frametitle{Analogues between DH instantiations}
+\begin{figure}[h]
+	\begin{center}
+		\begin{tabular}{| m{2.3cm} | m{2.5cm} m{2.5cm} m{2.5cm} |}
+			\hline
+			~ & DH & ECDH & SIDH\\
+			\hline
+			\textbf{Element}s & Integers $g$ modulo prime & Points $P$ in elliptic curve group & Curves $E$ in isogeny class\\
+			\hline
+			\textbf{Secrets} & Exponents $x$ & scalars $k$ & isogenies $\phi$ \\
+			\hline
+			\textbf{Computations} & $(g, x) \to g^x$ & $(P, k) to [k]P$ & $(E, \phi) \to \phi(E)$\\
+			\hline
+			\textbf{Hard problem} & Given $g, g^x$. Find $x$ & Given $P,[k]P$. Find $k$ & Given $E, \phi(E)$. Find $\phi$\\
+			\hline 
+		\end{tabular}
+	\end{center}
+	%\caption{Analogues between DH instantiations}\label{DH-Analogues-table:figure}
+\end{figure}
 \end{frame}
 \end{document}
