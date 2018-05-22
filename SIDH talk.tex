@@ -32,7 +32,7 @@
 \begin{frame}
 \frametitle{Elliptic curves}
 	\begin{definition}
-		An \alert{elliptic curve} is a pair $(E, O)$, where $E$ is a curve of genus 1 and $O \in E$.
+		An \alert{elliptic curve} is a pair $(E, O)$, where $E$ is a curve of genus 1 and $O \in E$ is a point at infinity.
 	\end{definition}
 	\setbeamertemplate{itemize items}[circle]
 	\begin{itemize}
@@ -163,7 +163,7 @@
 
 	Supersingular isogeny graph is always
 		\begin{itemize}
-			\item conncted;
+			\item connected;
 			\item $\ell + 1$-regular, where $\ell$ is isogeny degree.
 		\end{itemize}
 \end{frame}
@@ -256,7 +256,7 @@
 
 	We know several algorithms to compute discrete logarithms:
 	\begin{itemize}
-		\item in \emph{generic} group $G$ that require $O(\sqrt(q))$ computational steps, where $q$ is the largest prime divisor of $\#G \implies G$ is usually chosen such that $\log_2q \simeq 256$;
+		\item in \emph{generic} group $G$ that require $O(\sqrt{q}))$ computational steps, where $q$ is the largest prime divisor of $\#G \implies G$ is usually chosen such that $\log_2q \simeq 256$;
 		
 		\item in group $G = (\mathbb{Z}/p\mathbb{Z})^{\ast}$ of complexity better than $O(\sqrt{\#G})$.
 	\end{itemize}
@@ -495,8 +495,36 @@
 
 \begin{frame}
 \frametitle{Security of SIDH}
+	\begin{definition}[Supersingular Decision Diffie-Hellman]
+		%Let $E, \ell_A, \ell_B, \varepsilon_A, \varepsilon_B, P_A, Q_A, P_B, Q_B$ be the parameters of a SIDH protocol.
+		
+		Given a tuple sampled with probability  $1/2$ from one of the following two distributions:
+		\begin{enumerate}
+			\item $(E/\langle A \rangle, \phi(P_B), \phi(Q_B). E/\langle B \rangle, \psi(P_A), \psi(Q_A), e/\langle A, B \rangle)$, where
+			
+			\begin{itemize}
+				\item $A \in E$ is a uniformly random point of order $\ell_A^{\varepsilon_A}$,
+				
+				\item $B \in E$ is a uniformly random point of order $\ell_B^{\varepsilon_B}$,
+				
+				\item $\phi: E \to E/\langle A \rangle$ is the isogeny of kernel $\langle A \rangle$, and
+				
+				\item $\psi: E \to E/\langle B \rangle$ is the isogeny of kernel $\langle B \rangle$;
+			\end{itemize}
+			
+			\item $(E/\langle A \rangle, \phi(P_B), \phi(Q_B), E/\langle	B \rangle, \psi(P_A), \psi(Q_A), E/\langle C \rangle)$, where $A, B, \phi, \psi$ are as above, and where $C \in E$ is a uniformly random point of order $\ell_A^{\varepsilon_A}\ell_B^{\varepsilon_B}$;
+		\end{enumerate}
+		determine from which distribution the tuple is sampled.
+	\end{definition}
+\end{frame}
 
-???
+\begin{frame}
+\frametitle{Security of SIDH}
+	\begin{itemize}
+		\item The best known algorithms for SSDDH have \alert{exponential complexity}, even on a quantum computer.
+		
+		\item Although there is no efficient algorithms to solve SSDDH at the time of writing, several polynomial-time attacks have appeared  against variations of SIDH.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -519,5 +547,19 @@
 	\end{center}
 	%\caption{Analogues between DH instantiations}\label{DH-Analogues-table:figure}
 \end{figure}
+\end{frame}
+
+\begin{frame}
+	\begin{thebibliography}
+		\bibitem{IsogenyCryptoDeFeo} Luca De Feo. \textit{Mathematics of isogeny based cryptography},Lecture notes, École Mathématique Africaine, Thiès, Sénégal, 2017, 44 pp. \url{https://arxiv.org/abs/1711.04062}
+		
+		\bibitem{TowardsQuantumRes} Luca De Feo, David Jao, Jerome Plut. \textit{Towards Quantum-Resistant Cryptosystems From Supersingular Elliptic Curve Isogenies}, Journal of Mathematical Cryptology, 2014, 8 (3), pp. 209-247. \url{https://eprint.iacr.org/2011/506.pdf}
+		
+		\bibitem{Galbraith-Talk} Steven D. Galbraith and Ilya Chevyrev. \textit{Distinguishing Maximal Orders of Quaternion Algebra by their Shoert Elements}. ANTS, 2014, August 7, 2014, Korea. \url{https://www.math.auckland.ac.nz/~sgal018/ANTS2014.pdf}
+		
+		\bibitem{Joux} Antoine Joux. \textit{Algorithmic cryptanalysis}. CRC Press, 2009.
+		
+		\bibitem{Silverman} Joseph H. Silverman. \textit{The arithmetic of elliptic curves}, volume 106 of \textit{Graduate Texts in Mathematics}. Springer-Verlag, New York, 1992.
+	\end{thebibliography}
 \end{frame}
 \end{document}
