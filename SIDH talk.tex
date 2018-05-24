@@ -10,11 +10,15 @@
 \usetikzlibrary{graphs, positioning, arrows, matrix}
 \usepackage{sansmathaccent}
 \pdfmapfile{+sansmathaccent.map}
-\usepackage{amssymb,latexsym,amsmath,amscd,amsthm, mathtools,stmaryrd, hyperref,array, cleveref}
+\usepackage{amssymb,latexsym,amsmath,amscd,amsthm, mathtools,stmaryrd, array, cleveref}
+
 
 \title{Supersingular Isogeny Diffie-Hellman}
 \author{Valeriia Kulynych}
-\institute{Université de Toulon}
+\institute{
+	Master 1 Diploma Thesis\\
+	Université de Toulon\\
+	Directed by Yves Aubry}
 \date{May 25th, 2018}
 \begin{document}
 
@@ -164,7 +168,7 @@
 	Supersingular isogeny graph is always
 		\begin{itemize}
 			\item connected;
-			\item $\ell + 1$-regular, where $\ell$ is isogeny degree.
+			\item $\ell + 1$-regular, where $\ell$ is isogeny degree and $S = \{\ell\}$.
 		\end{itemize}
 \end{frame}
 
@@ -230,7 +234,7 @@
 	\begin{tabular}{l *{2}{p{17ex}<{\centering}}}
 		\hline
 		Public parameters   & \multicolumn{2}{l}{A prime $p$, $p-1$ has large prime cofactor.}\\
-							& \multicolumn{2}{l}{A multiplicative generator $g \in \mathbb{Z}/p\mathbb{Z}$.}\\
+							& \multicolumn{2}{l}{A multiplicative generator $g \in (\mathbb{Z}/p\mathbb{Z})^{\ast}$.}\\
 		\hline
 							& {\bf Alice} & {\bf Bob}\\
 		\hline
@@ -242,7 +246,7 @@
 \end{figure}
 	
 	\begin{itemize}
-		\item The protocol can be generalized by replacing the multiplicative group $(\mathbb{Z}/p\mathbb{Z})^{\ast}$ with anny other cyclic group $G = \langle g \rangle$.
+		\item The protocol can be generalized by replacing the multiplicative group $(\mathbb{Z}/p\mathbb{Z})^{\ast}$ with any other cyclic group $G = \langle g \rangle$.
 	\end{itemize}
 \end{frame}
 
@@ -294,7 +298,7 @@
 
 \begin{frame}
 \frametitle{Background}
-	Let $G = (E, V)$ be an undirected graph, where $V = \{ v_i | i \in I\}$ is the set of vertices, and $E$ is the set of edges. A \alert{random walk} of length $i$ is a path $v_1 \to \cdots v_i$, defined by the random process that selects $v_i$ uniformly at random among the neighbors of $v_{i-1}$.
+	Let $G = (V, E)$ be an undirected graph, where $V = \{ v_i | i \in I\}$ is the set of vertices, and $E$ is the set of edges. A \alert{random walk} of length $i$ is a path $v_1 \to \cdots \to v_i$, defined by the random process that selects $v_i$ uniformly at random among the neighbours of $v_{i-1}$.
 	 
 	Why do we use \alert{supersingular} isogenies?
 	\begin{itemize}
@@ -430,7 +434,7 @@
 				\item \emph{On practice}, we can choose $f = 1$.
 			\end{itemize}
 	\end{itemize}
-	$\implies$ $E(\mathbb{F}_p^2)$ contains $\ell_A^{\varepsilon_A - 1}(\ell_A + 1)$  cyclic subgroups of order $\ell_A^{\varepsilon_A}$, each defining a distinct isogeny; $\implies$ a single point $A \in E(\mathbb{F}_q)$ is enough to represent an isogeny walk of length $\varepsilon_A$.
+	$\implies$ $E(\mathbb{F}_{p^2})$ contains $\ell_A^{\varepsilon_A - 1}(\ell_A + 1)$  cyclic subgroups of order $\ell_A^{\varepsilon_A}$, each defining a distinct isogeny; $\implies$ a single point $A \in E(\mathbb{F}_q)$ is enough to represent an isogeny walk of length $\varepsilon_A$.
 	
 \end{frame}
 
@@ -461,7 +465,7 @@
 		
 		\item After computing secret isogenies $\alpha$ and $\beta$, Alice publishes $\alpha(P_B)$ and $\alpha(Q_B)$ and Bob publishes $\beta(P_A)$ and $\beta(Q_A)$.
 		
-		\item Alice computes $\beta(A) = [m_A]\beta(P_A) + [n_A]\beta(Q_A)$ and Bob computes $\alpha(B) = [m_B]\alpha(P_B) + \alpha(Q_B)$.
+		\item Alice computes $\beta(A) = [m_A]\beta(P_A) + [n_A]\beta(Q_A)$ and Bob computes $\alpha(B) = [m_B]\alpha(P_B) + [n_B]\alpha(Q_B)$.
 		
 		\item They compute isogenies $\alpha', \beta'$, whose kernels are generated respectively by $\langle \beta(A) \rangle$ and $\langle \alpha(A) \rangle$
 		$\implies$ They compute the shared secret $E/\langle A, B \rangle$.
@@ -482,7 +486,7 @@
 		& {\bf Alice} & {\bf Bob}\\
 		\hline
 		Random secret & $A=[m_A]P_A+[n_A]Q_A$ & $B=[m_B]P_B+[n_B]Q_B$\\[1ex]
-		Secret isogeny & $\alpha:E\to E_A=E/\alpha A \rangle $ & $\beta:E\to E_B=E/\langle B \rangle$\\[1ex]
+		Secret isogeny & $\alpha:E\to E_A=E/\langle A \rangle $ & $\beta:E\to E_B=E/\langle B \rangle$\\[1ex]
 		Exchange data &  \hfill $E_A,\alpha(P_B),\alpha(Q_B) \longrightarrow$ & $\longleftarrow E_B,\beta(P_A),\beta(Q_A)$ \hfill\strut \\[1ex]
 		Shared secret & $E/\langle A,B \rangle = E_B/\langle \beta(A) \rangle$ & $E/\langle A,B \rangle = E_A/ \langle \alpha(B)\rangle$
 	\end{tabular}
@@ -545,21 +549,13 @@
 			\hline 
 		\end{tabular}
 	\end{center}
-	%\caption{Analogues between DH instantiations}\label{DH-Analogues-table:figure}
+	\caption{Analogues between DH instantiations}\label{DH-Analogues-table:figure}
 \end{figure}
 \end{frame}
 
 \begin{frame}
-	\begin{thebibliography}
-		\bibitem{IsogenyCryptoDeFeo} Luca De Feo. \textit{Mathematics of isogeny based cryptography},Lecture notes, École Mathématique Africaine, Thiès, Sénégal, 2017, 44 pp. \url{https://arxiv.org/abs/1711.04062}
-		
-		\bibitem{TowardsQuantumRes} Luca De Feo, David Jao, Jerome Plut. \textit{Towards Quantum-Resistant Cryptosystems From Supersingular Elliptic Curve Isogenies}, Journal of Mathematical Cryptology, 2014, 8 (3), pp. 209-247. \url{https://eprint.iacr.org/2011/506.pdf}
-		
-		\bibitem{Galbraith-Talk} Steven D. Galbraith and Ilya Chevyrev. \textit{Distinguishing Maximal Orders of Quaternion Algebra by their Shoert Elements}. ANTS, 2014, August 7, 2014, Korea. \url{https://www.math.auckland.ac.nz/~sgal018/ANTS2014.pdf}
-		
-		\bibitem{Joux} Antoine Joux. \textit{Algorithmic cryptanalysis}. CRC Press, 2009.
-		
-		\bibitem{Silverman} Joseph H. Silverman. \textit{The arithmetic of elliptic curves}, volume 106 of \textit{Graduate Texts in Mathematics}. Springer-Verlag, New York, 1992.
-	\end{thebibliography}
+	\begin{center}
+		\Huge{Thank you!}
+	\end{center}
 \end{frame}
 \end{document}
